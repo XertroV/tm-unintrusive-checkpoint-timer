@@ -1,0 +1,10 @@
+[meta]
+name     = "Unintrusive Checkpoint Timer"
+author   = "XertroV"
+category = "Utilities"
+version  = "0.0.1"
+siteid   = 355
+
+[script]
+#__DEFINES__
+dependencies = ["Camera", "VehicleState"]
