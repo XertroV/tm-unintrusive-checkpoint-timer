@@ -42,7 +42,6 @@ void AwaitGetMLObjs() {
 vec3 g_CamDir = vec3(1, 1, 1);
 vec3 g_CamVelDir = vec3(1, 1, 1);
 
-uint count = 0;
 void WatchForIntrusiveCPFrame() {
     auto app = cast<CTrackMania>(GetApp());
     auto net = cast<CTrackManiaNetwork>(app.Network);
@@ -53,27 +52,20 @@ void WatchForIntrusiveCPFrame() {
         auto cam = Camera::GetCurrent();
         if (cam is null) continue;
 
-        auto loc = mat4(cam.NextLocation);
-        auto R_T = mat4::Translate(Camera::GetCurrentPosition() * -1) * loc;
-        vec4 dir = (R_T * vec3(0, 0, -1));
-        g_CamDir = dir.xyz * -1;
-        g_CamVelDir = cam.Vel.LengthSquared() > .01 ? cam.Vel.Normalized() : g_CamDir;
+        // auto loc = mat4(cam.NextLocation);
+        // auto R_T = mat4::Translate(Camera::GetCurrentPosition() * -1) * loc;
+        // vec4 dir = (R_T * vec3(0, 0, -1));
+        // g_CamDir = dir.xyz * -1;
+        // g_CamVelDir = cam.Vel.LengthSquared() > .01 ? cam.Vel.Normalized() : g_CamDir;
 
-        count++;
-        // if (count % 15 == 0) {
-        //     print(dir.ToString());
-        //     print(g_CamVelDir.ToString());
-        //     print(cam.Vel.ToString());
-        //     print("-------------");
-        // }
+        // if (app.GameScene is null) continue;
+        // auto player = VehicleState::GetViewingPlayer();
+        // if (player is null) continue;
+        // auto vis = VehicleState::GetVis(app.GameScene, player);
+        // if (vis is null) continue;
+        // auto speed = 3.6 * vis.AsyncState.WorldVel.Length();
 
-        if (app.GameScene is null) continue;
-        auto player = VehicleState::GetViewingPlayer();
-        if (player is null) continue;
-        auto vis = VehicleState::GetVis(app.GameScene, player);
-        if (vis is null) continue;
-        auto speed = 3.6 * vis.AsyncState.WorldVel.Length();
-        // print('' + speed);
+        auto speed = 0;
         float t = Math::Clamp(Math::InvLerp(300., 700., speed), 0., 1.);
         CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
         // trace('set cp frame rel.y to: ' + Math::Lerp(0., 20., t) + ' visible: ' + CheckpointsFrame.Visible + ' Id: ' + CheckpointsFrame.IdName);
