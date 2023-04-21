@@ -67,8 +67,10 @@ void WatchForIntrusiveCPFrame() {
 
         auto speed = 0;
         float t = Math::Clamp(Math::InvLerp(300., 700., speed), 0., 1.);
-        CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
-        // trace('set cp frame rel.y to: ' + Math::Lerp(0., 20., t) + ' visible: ' + CheckpointsFrame.Visible + ' Id: ' + CheckpointsFrame.IdName);
+        // can occasionally be null due to yield, but we need the yield before the continues;
+        if (CheckpointsFrame !is null) {
+            CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
+        }
     }
 }
 
