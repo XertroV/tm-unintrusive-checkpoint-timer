@@ -47,7 +47,9 @@ void RenderMenu() {
 }
 
 
-
+void Render() {
+    DrawLocator();
+}
 
 
 
