@@ -60,6 +60,7 @@ mat3 mlToScreen;
 float xExtra;
 mat3 s1, s2, s3, s4;
 vec2 screen, idealScreen;
+const vec2 MLBounds = vec2(160, 90);
 
 void RenderEarly() {
     screen = GetScreen();
@@ -77,8 +78,6 @@ void RenderEarly() {
 vec2 GetScreen() {
     return vec2(Draw::GetWidth(), Draw::GetHeight());
 }
-
-const vec2 MLBounds = vec2(160, 90);
 
 vec2 ScreenToML(vec2 screenPos) {
     return (screenToML * screenPos).xy;
