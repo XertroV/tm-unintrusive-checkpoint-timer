@@ -9,6 +9,9 @@ void CMapLoop() {
         AwaitGetMLObjs();
         while (net.ClientManiaAppPlayground !is null) yield();
         @CheckpointsFrame = null;
+        @CPFrameRaceRank = null;
+        @CPFrameRaceDiff = null;
+        @CPFrameRaceTime = null;
     }
 }
 
@@ -16,6 +19,9 @@ void CMapLoop() {
 // MainFrame.Controls[0].Controls[0].Controls[0] -- "frame-checkpoint"
 
 CGameManialinkFrame@ CheckpointsFrame = null;
+CGameManialinkFrame@ CPFrameRaceRank = null;
+CGameManialinkFrame@ CPFrameRaceDiff = null;
+CGameManialinkFrame@ CPFrameRaceTime = null;
 vec2 OrigCpFramePos;
 
 void AwaitGetMLObjs() {
@@ -32,7 +38,11 @@ void AwaitGetMLObjs() {
             auto frame = cast<CGameManialinkFrame>(layer.LocalPage.GetFirstChild("Race_Checkpoint"));
             if (frame is null) continue;
             @CheckpointsFrame = frame;
+            @CPFrameRaceRank = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-rank"));
+            @CPFrameRaceDiff = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-diff"));
+            @CPFrameRaceTime = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-time"));
             OrigCpFramePos = CheckpointsFrame.RelativePosition_V3;
+            UpdateCPFramePreferences();
             break;
         }
     }

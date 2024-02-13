@@ -10,6 +10,7 @@ void Unload() {
     if (CheckpointsFrame !is null) {
         CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos;
     }
+    ResetCPFrameVisibility();
 }
 
 void Notify(const string &in msg) {
