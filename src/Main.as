@@ -1,5 +1,6 @@
 void Main() {
     startnew(CMapLoop);
+    startnew(WatchForCpFrameChangeOfVis);
 }
 
 /** Called when the plugin is unloaded and completely removed from memory.

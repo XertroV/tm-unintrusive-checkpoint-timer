@@ -49,3 +49,19 @@ void ResetCPFrameVisibility() {
         CPFrameRaceRank.Visible = true;
     }
 }
+
+void WatchForCpFrameChangeOfVis() {
+    while (true) {
+        yield();
+        if (!CanAccessMLElements) { sleep(100); continue; };
+        if (CPFrameRaceDiff !is null && S_HideCPFrameRaceDiff && CPFrameRaceDiff.Visible) {
+            CPFrameRaceDiff.Visible = !S_HideCPFrameRaceDiff;
+        }
+        if (CPFrameRaceTime !is null && S_HideCPFrameRaceTime && CPFrameRaceTime.Visible) {
+            CPFrameRaceTime.Visible = !S_HideCPFrameRaceTime;
+        }
+        if (CPFrameRaceRank !is null && S_HideCPFrameRaceRank && CPFrameRaceRank.Visible) {
+            CPFrameRaceRank.Visible = !S_HideCPFrameRaceRank;
+        }
+    }
+}

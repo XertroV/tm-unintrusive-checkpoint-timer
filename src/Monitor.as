@@ -1,12 +1,15 @@
 const string CheckpointPageName = "UIModule_Race_Checkpoint";
+bool CanAccessMLElements = false;
 
 void CMapLoop() {
     auto app = cast<CGameManiaPlanet>(GetApp());
     auto net = app.Network;
     while (true) {
         yield();
+        CanAccessMLElements = false;
         while (net.ClientManiaAppPlayground is null) yield();
         AwaitGetMLObjs();
+        CanAccessMLElements = true;
         while (net.ClientManiaAppPlayground !is null) yield();
         @CheckpointsFrame = null;
         @CPFrameRaceRank = null;
