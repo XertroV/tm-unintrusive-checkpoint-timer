@@ -79,7 +79,8 @@ void WatchForIntrusiveCPFrame() {
         // auto speed = 3.6 * vis.AsyncState.WorldVel.Length();
 
         auto speed = 0;
-        float t = Math::Clamp(Math::InvLerp(300., 700., speed), 0., 1.);
+        // float t = Math::Clamp(Math::InvLerp(300., 700., speed), 0., 1.);
+        float t = 0;
         // can occasionally be null due to yield, but we need the yield before the continues;
         if (CheckpointsFrame !is null) {
             if (S_EnableCustomPos) {
