@@ -2,7 +2,7 @@
 name     = "Unintrusive Checkpoint Timer"
 author   = "XertroV"
 category = "Race"
-version  = "0.2.3"
+version  = "0.2.4"
 siteid   = 355
 
 [script]
