@@ -7,10 +7,10 @@ void CMapLoop() {
     while (true) {
         yield();
         CanAccessMLElements = false;
-        while (net.ClientManiaAppPlayground is null) yield();
+        while (net.ClientManiaAppPlayground is null || app.RootMap is null) yield();
         AwaitGetMLObjs();
         CanAccessMLElements = true;
-        while (net.ClientManiaAppPlayground !is null) yield();
+        while (net.ClientManiaAppPlayground !is null && app.RootMap !is null) yield();
         @CheckpointsFrame = null;
         @CPFrameRaceRank = null;
         @CPFrameRaceDiff = null;
