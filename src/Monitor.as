@@ -44,7 +44,9 @@ void AwaitGetMLObjs() {
             @CPFrameRaceRank = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-rank"));
             @CPFrameRaceDiff = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-diff"));
             @CPFrameRaceTime = cast<CGameManialinkFrame>(frame.GetFirstChild("frame-race-time"));
-            OrigCpFramePos = CheckpointsFrame.RelativePosition_V3;
+            if (_LastSetPos != CheckpointsFrame.RelativePosition_V3) {
+                OrigCpFramePos = CheckpointsFrame.RelativePosition_V3;
+            }
             UpdateCPFramePreferences();
             break;
         }
@@ -87,11 +89,12 @@ void WatchForIntrusiveCPFrame() {
                 CheckpointsFrame.RelativePosition_V3 = S_CustomPos;
             } else {
                 CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
+                _LastSetPos = CheckpointsFrame.RelativePosition_V3;
             }
         }
     }
 }
-
+vec2 _LastSetPos;
 
 /**
  * cam dir notes:
