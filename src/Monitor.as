@@ -56,6 +56,7 @@ void AwaitGetMLObjs() {
 
 vec3 g_CamDir = vec3(1, 1, 1);
 vec3 g_CamVelDir = vec3(1, 1, 1);
+vec2 _LastSetPos;
 
 void WatchForIntrusiveCPFrame() {
     auto app = cast<CTrackMania>(GetApp());
@@ -88,13 +89,12 @@ void WatchForIntrusiveCPFrame() {
             if (S_EnableCustomPos) {
                 CheckpointsFrame.RelativePosition_V3 = S_CustomPos;
             } else {
-                CheckpointsFrame.RelativePosition_V3 = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
-                _LastSetPos = CheckpointsFrame.RelativePosition_V3;
+                _LastSetPos = OrigCpFramePos + vec2(0., 21.5) + Math::Lerp(vec2(0.), vec2(0., 20.), t);
+                CheckpointsFrame.RelativePosition_V3 = _LastSetPos;
             }
         }
     }
 }
-vec2 _LastSetPos;
 
 /**
  * cam dir notes:
