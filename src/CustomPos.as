@@ -39,9 +39,9 @@ void DrawLocator() {
     vec2 mlPosOffset = vec2(10, 0);
     auto winPos = MLToScreen(S_CustomPos - mlPosOffset) / UI::GetScale();
     UI::PushStyleColor(UI::Col::WindowBg, vec4(0, 0, 0, .4));
-    UI::SetNextWindowPos(winPos.x, winPos.y, wasActive ? UI::Cond::Appearing : UI::Cond::Always);
+    UI::SetNextWindowPos(int(winPos.x), int(winPos.y), wasActive ? UI::Cond::Appearing : UI::Cond::Always);
     auto winSize = vec2(250, 150) * Draw::GetHeight() / 1440.;
-    UI::SetNextWindowSize(winSize.x, winSize.y, UI::Cond::Always);
+    UI::SetNextWindowSize(int(winSize.x), int(winSize.y), UI::Cond::Always);
     if (UI::Begin("cp locator", g_DrawLocator, UI::WindowFlags::NoCollapse | UI::WindowFlags::NoResize)) {
         wasActive = UI::IsWindowFocused();
         if (wasActive) {

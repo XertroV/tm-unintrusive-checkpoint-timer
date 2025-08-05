@@ -1,6 +1,6 @@
 void Main() {
-    startnew(CMapLoop).WithRunContext(Meta::RunContext::AfterScripts);
-    startnew(WatchForCpFrameChangeOfVis).WithRunContext(Meta::RunContext::AfterScripts);
+    Meta::StartWithRunContext(Meta::RunContext::AfterScripts, CMapLoop);
+    Meta::StartWithRunContext(Meta::RunContext::AfterScripts, WatchForCpFrameChangeOfVis);
 }
 
 /** Called when the plugin is unloaded and completely removed from memory.
