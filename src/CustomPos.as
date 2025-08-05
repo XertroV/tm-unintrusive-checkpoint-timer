@@ -1,3 +1,6 @@
+[Setting category="Custom Pos" name="Enable Plugin" description="When false, it won't do anything."]
+bool ShowWindow = true;
+
 [Setting category="Custom Pos" name="Enable Custom Position"]
 bool S_EnableCustomPos = false;
 

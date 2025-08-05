@@ -35,11 +35,6 @@ const string PluginIcon = Icons::ArrowUp;
 const string MenuTitle = "\\$c8f" + PluginIcon + "\\$z " + Meta::ExecutingPlugin().Name;
 
 
-
-// show the window immediately upon installation
-[Setting hidden]
-bool ShowWindow = true;
-
 /** Render function called every frame intended only for menu items in `UI`. */
 void RenderMenu() {
     if (UI::MenuItem(MenuTitle, "", ShowWindow)) {
